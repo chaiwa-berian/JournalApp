@@ -1,7 +1,12 @@
 package com.bantulogic.core.journalapp.journals.util;
+
+import com.bantulogic.core.journalapp.journals.data.FakeJournalsServiceApiImpl;
+import com.bantulogic.core.journalapp.journals.data.JournalRepositories;
+import com.bantulogic.core.journalapp.journals.data.JournalsRepository;
+
 /**
  * Enables injection of mock implementations for {@link ImageFile} and
- * {@link JournalssRepository} at compile time. This is useful for testing, since it allows us to use
+ * {@link JournalsRepository} at compile time. This is useful for testing, since it allows us to use
  * a fake instance of the class to isolate the dependencies and run a test hermetically.
  */
 public class Injection {
@@ -11,6 +16,6 @@ public class Injection {
     }
 
     public static JournalsRepository provideJournalsRepository() {
-        return JournalsRepositories.getInMemoryRepoInstance(new FakeJournalsServiceApiImpl());
+        return JournalRepositories.getInMemoryRepoInstance(new FakeJournalsServiceApiImpl());
     }
 }

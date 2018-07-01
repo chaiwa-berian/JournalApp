@@ -16,12 +16,12 @@ public class FakeJournalsServiceApiImpl implements JournalsServiceApi {
     private static final ArrayMap<String, Journal> JOURNALS_SERVICE_DATA = new ArrayMap();
 
     @Override
-    public void getAllJournal(JournalsServiceCallback<List<Journal>> callback) {
+    public void getAllJournals(JournalsServiceCallback<List<Journal>> callback) {
         callback.onLoaded(Lists.newArrayList(JOURNALS_SERVICE_DATA.values()));
     }
 
     @Override
-    public void getJournal(String journalId, NotesServiceCallback<Journal> callback) {
+    public void getJournal(String journalId, JournalsServiceCallback<Journal> callback) {
         Journal journal = JOURNALS_SERVICE_DATA.get(journalId);
         callback.onLoaded(journal);
     }
@@ -32,7 +32,7 @@ public class FakeJournalsServiceApiImpl implements JournalsServiceApi {
     }
 
     @VisibleForTesting
-    public static void addNotes(Journal... journals) {
+    public static void addJournals(Journal... journals) {
         for (Journal journal : journals) {
             JOURNALS_SERVICE_DATA.put(journal.getId(), journal);
         }
